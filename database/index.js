@@ -127,8 +127,11 @@ const checkLogin = (identifier, password, category, callback) => {
     // callback(err, docs);
   });
   // Users.find({username: username});
-
 }
+
+// const signUp = (info, callback) => {
+//   let 
+// }
 
 
 module.exports = {

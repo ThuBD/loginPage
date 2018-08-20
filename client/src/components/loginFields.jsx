@@ -28,13 +28,13 @@ class LoginFields extends React.Component {
   render() {
     return (
       <div styleName="loginDiv">
-        <h1>Log in to AppliTrees</h1>
+        <h1>Log in to AppCounts</h1>
         <form onSubmit={this.submitLogin} method="post" styleName="loginForm" >
           <label>Username or email:</label>
           <input type="text" name="username" id="username"/>
           <label>password:</label>
           <input type="password" name="userpassword" id="password"/>
-          <p>Sign Up</p>
+          <a onClick={this.props.rendsign}>Sign Up</a>
           <button styleName="loginButton">log In</button>
         </form>
       </div>

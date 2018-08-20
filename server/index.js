@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
-const db = require('../database');
+const db = require('../database/postgres.js');
 
 let app = express();
 const port = 4809;
@@ -22,6 +22,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 //               password: 'thuisthumuch',
 //               email: 'alilthumuch@gmail.com'
 //             });
+
+app.post('/signup/newuser', (req, res) => {
+  // db.signup(req.body, (req, res) => {
+
+  // })
+  console.log(req.body);
+  db.saveUserInit(req.body, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(404).json({result: 'Error'});
+    } else {
+      res.status(200).json(data);
+    }
+  })
+})
 
 app.post('/login', (req, res) => {
   console.log(req.body);

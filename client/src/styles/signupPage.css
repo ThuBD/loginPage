@@ -1,0 +1,12 @@
+.signupDiv > form {
+  margin-top: 30%;
+  margin-left: 40%;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100px;
+}
+
+.signupDiv {
+  width: 30%;
+}
