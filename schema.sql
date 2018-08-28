@@ -1,20 +1,22 @@
-DROP DATABASE AppCounts;
+DROP DATABASE appcounts;
 
-CREATE DATABASE AppCounts;
+CREATE DATABASE appcounts;
+
 \c appcounts;
+
 CREATE TABLE users (
-  id serial,
-  username text PRIMARY KEY,
+  id serial PRIMARY KEY,
+  username text UNIQUE,
   password text,
   user_email text,
   user_address text,
   created_at text,
-  total_applied smallint,
-  date_firstapp text,
-  jobs_id integer[]
+  date_firstapp text
 );
+
 CREATE TABLE jobs (
   id bigserial PRIMARY KEY,
+  user_id integer,
   company_name text,
   date_applied text,
   date_heard text,
@@ -29,3 +31,5 @@ CREATE TABLE jobs (
   personal_rating DECIMAL(2,1),
   display boolean
 );
+
+-- users add authenticated column?

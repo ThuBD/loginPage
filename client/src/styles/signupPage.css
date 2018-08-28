@@ -1,12 +1,37 @@
-.signupDiv > form {
-  margin-top: 30%;
+.signupDiv {
   margin-left: 40%;
   margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  min-height: 100px;
+  margin-top: 7%;
 }
 
-.signupDiv {
+.signupDiv > form {
+  border: 1px solid grey;
+  border-radius: 10px;
+  height: 300px;
   width: 30%;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 18px;
+  padding-top: 3%;
+  padding-left: 5%;
+  background-color: #f2dea4;
+}
+
+.signupDiv > form > input {
+  height: 20px;
+  max-width: 200px;
+}
+
+.signupDiv > form > button {
+  height: 40px;
+  width: 150px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-left: 10%;
+}
+
+.mapstyles {
+  min-height: 300px;
+  min-width: 300px;
 }

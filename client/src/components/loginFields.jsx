@@ -1,5 +1,5 @@
 import React from 'react';
-import { ajax } from 'jquery';
+import $ from 'jquery';
 import CSSModules from 'react-css-modules';
 import styles from '../styles/loginFields.css';
 
@@ -12,14 +12,18 @@ class LoginFields extends React.Component {
   submitLogin(e) {
     e.preventDefault();
     const data = {username: e.target.username.value, password: e.target.password.value};
-    console.log(data);
-    ajax({
+    $.ajax({
       url: 'http://localhost:4809/login',
       method: 'POST',
       data: data,
       dataType: 'json'
     }).then((response) => {
-      this.props.auth(response);
+      console.log(response);
+      if (response.authenticated === false) {
+        $('#authfail').remove();
+        $('<span id="authfail">username or password is incorrect</span>').insertAfter($('#username'));
+      }
+      this.props.auth(response.authenticated, response);
     }, (err) => {
       console.log(err);
     })
@@ -30,11 +34,11 @@ class LoginFields extends React.Component {
       <div styleName="loginDiv">
         <h1>Log in to AppCounts</h1>
         <form onSubmit={this.submitLogin} method="post" styleName="loginForm" >
-          <label>Username or email:</label>
+          <label>Username</label>
           <input type="text" name="username" id="username"/>
           <label>password:</label>
           <input type="password" name="userpassword" id="password"/>
-          <a onClick={this.props.rendsign}>Sign Up</a>
+          <a onClick={this.props.rendsign} href="">Sign Up</a>
           <button styleName="loginButton">log In</button>
         </form>
       </div>

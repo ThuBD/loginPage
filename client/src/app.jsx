@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import LoginFields from './components/loginFields.jsx';
 import SignupPage from './components/signupPage.jsx';
+import AccountPage from './components/accountPage.jsx';
 // import CSSModules from 'react-css-modules';
 // import styles from './styles/app.css';
 
@@ -10,24 +11,29 @@ class App extends React.Component {
     super(props);
     this.state = {
       allowLogin: false,
-      renderSignup: false
+      renderSignup: false,
+      renderAccount: false,
+      userinfo: {}
     };
     this.renderAuthentication = this.renderAuthentication.bind(this);
     this.gotoSignup = this.gotoSignup.bind(this);
     this.backtoLogin = this.backtoLogin.bind(this);
   }
 
-  renderAuthentication(permission) {
+  renderAuthentication(permission, info) {
     if (permission === true) {
       this.setState({
-        allowLogin: permission
+        allowLogin: permission,
+        renderAccount: true,
+        userinfo: info
       }, () => {
         console.log('Login sucess from auth.');
       })
     }
   }
 
-  gotoSignup() {
+  gotoSignup(e) {
+    e.preventDefault();
     this.setState({
       renderSignup: true
     }, () => {
@@ -44,7 +50,13 @@ class App extends React.Component {
   }
 
   render() {
-    if (this.state.renderSignup === true) {
+    if (this.state.renderAccount) {
+      return (
+        <div>
+          <AccountPage userinfo={this.state.userinfo}/>
+        </div>
+      )
+    } else if (this.state.renderSignup === true) {
       return (
         <div>
           <SignupPage rendlogin={this.backtoLogin}/>

@@ -21,6 +21,11 @@
   max-width: 200px;
 }
 
+.loginForm > a {
+  position: relative;
+  margin-left: 50%;
+}
+
 .loginDiv {
   margin-left: 40%;
   margin-right: auto;
